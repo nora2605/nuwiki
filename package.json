@@ -1,0 +1,26 @@
+{
+  "name": "nuwiki",
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.10",
+    "@types/node": "^24.7.0",
+    "daisyui": "^5.3.10",
+    "drizzle-kit": "^0.22.7"
+  },
+  "dependencies": {
+    "@solidjs/router": "^0.15.0",
+    "@solidjs/start": "^1.1.0",
+    "@tailwindcss/vite": "^4.1.16",
+    "better-sqlite3": "^11.0.0",
+    "drizzle-orm": "^0.31.2",
+    "lucide-solid": "^0.548.0",
+    "solid-js": "^1.9.5",
+    "tailwindcss": "^4.1.16",
+    "vinxi": "^0.5.7"
+  }
+}
