@@ -1,31 +1,30 @@
-import { A } from "@solidjs/router";
-import Counter from "~/components/Counter";
+import { A, createAsync, query } from "@solidjs/router";
+import { For, Suspense } from "solid-js";
+import { db } from "~/db/db";
+import { Nodes } from "~/db/schema";
+
+const getNodes = query(async () => {
+  "use server";
+  return db.select().from(Nodes);
+}, "users");
+
+export const route = {
+  preload: () => getNodes(),
+};
 
 export default function Home() {
+  const nodes = createAsync(() => getNodes());
+
   return (
-    <main class="text-center mx-auto text-gray-700 p-4">
+    <main class="text-gray-700 p-4 flex flex-col items-center">
       <h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase my-16">
         Hello world!
       </h1>
-      <Counter />
-      <p class="mt-8">
-        Visit{" "}
-        <a
-          href="https://solidjs.com"
-          target="_blank"
-          class="text-sky-600 hover:underline"
-        >
-          solidjs.com
-        </a>{" "}
-        to learn how to build Solid apps.
-      </p>
-      <p class="my-4">
-        <span>Home</span>
-        {" - "}
-        <A href="/about" class="text-sky-600 hover:underline">
-          About Page
-        </A>{" "}
-      </p>
+      <Suspense fallback="loading...">
+        <ul class="text-indigo-200 text-xl list-disc">
+          <For each={nodes()}>{(el) => <li>{el.title}</li>}</For>
+        </ul>
+      </Suspense>
     </main>
   );
 }

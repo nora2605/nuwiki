@@ -1,9 +1,10 @@
+import nuwikiConfig from "./nuwiki.config";
+
 export default {
   dialect: "sqlite",
-  schema: "./drizzle/schema.ts",
+  schema: "./src/db/schema.ts",
   out: "./drizzle/migrations/",
-  // driver: "better-sqlite",
   dbCredentials: {
-    url: './drizzle/db.sqlite',
+    url: nuwikiConfig.db_file
   },
 };

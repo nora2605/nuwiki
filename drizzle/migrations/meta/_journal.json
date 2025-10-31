@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1761863753004,
+      "tag": "0000_living_wong",
+      "breakpoints": true
+    }
+  ]
+}
